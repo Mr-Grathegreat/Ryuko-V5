@@ -1,7 +1,7 @@
 {
-  "author": "ryuko",
+  "author": "Mot",
   "language": "english",
-  "allowinbox": false,
+  "allowinbox": true,
   "adminonly": false,
   "autocreatedb": true,
   "approval": false,
@@ -10,7 +10,7 @@
   "email": "sanjivfresh@gmail.com",
   "adminpass": "ryukodev",
   "operators": [
-    "100091459940475"
+    "61569790299591"
   ],
   "autorestart": {
     "status": true,
@@ -34,9 +34,9 @@
     "updatePresence": false,
     "forceLogin": false,
     "autoMarkDelivery": false,
-    "autoMarkRead": false,
+    "autoMarkRead": true,
     "autoReconnect": true,
-    "online": false,
+    "online": true,
     "emitReady": false,
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14.7; rv:132.0) Gecko/20100101 Firefox/132.0"
   },
