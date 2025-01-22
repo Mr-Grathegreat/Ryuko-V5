@@ -1,0 +1,82 @@
+const axios = require('axios');
+
+module.exports.config = {
+  name: "sim", // Command name
+  version: "1.0.0", // Command version
+  permission: 0, // Permission level (0: all, 1: group admins, 2: bot admins, 3: bot operators)
+  credits: "Your Name", // Creator of the code
+  description: "A chatbot using Sim & Teach API", // Command description
+  prefix: false, // Use prefix (true/false)
+  premium: false, // Enable premium feature (true/false)
+  category: "Chatbot", // Command category
+  usages: "/sim [query] or /sim teach [ask] | [answer]", // Command usage
+  cooldowns: 5 // Cooldown in seconds
+};
+
+module.exports.run = async ({ api, event, args }) => {
+  // Extract the first argument (mode)
+  const mode = args[0]?.toLowerCase();
+
+  if (mode === "teach") {
+    // Teaching mode: Ensure correct format with "|"
+    const input = args.slice(1).join(' '); // Combine the rest of the arguments
+    if (!input.includes('|')) {
+      return api.sendMessage(
+        "Invalid format. Please use: /sim teach [ask] | [answer]",
+        event.threadID,
+        event.messageID
+      );
+    }
+
+    const [ask, answer] = input.split('|').map((item) => item.trim()); // Split and trim
+    if (!ask || !answer) {
+      return api.sendMessage(
+        "Invalid format. Please use: /sim teach [ask] | [answer]",
+        event.threadID,
+        event.messageID
+      );
+    }
+
+    try {
+      const response = await axios.get('https://simsimi.ooguy.com/teach', {
+        params: { ask, ans: answer }
+      });
+
+      api.sendMessage(
+        `Chatbot successfully taught!\nQuestion: ${ask}\nAnswer: ${answer}`,
+        event.threadID,
+        event.messageID
+      );
+    } catch (error) {
+      api.sendMessage(
+        "Failed to teach the chatbot. Please try again later.",
+        event.threadID,
+        event.messageID
+      );
+    }
+  } else {
+    // Query mode: Handle chatbot queries
+    const query = args.join(' '); // Combine arguments into a query string
+    if (!query) {
+      return api.sendMessage(
+        "Please provide a query for the chatbot. Usage: /sim [query]",
+        event.threadID,
+        event.messageID
+      );
+    }
+
+    try {
+      const response = await axios.get('https://simsimi.ooguy.com/sim', {
+        params: { query }
+      });
+
+      api.sendMessage(`Chatbot: ${response.data.respond}`, event.threadID, event.messageID);
+    } catch (error) {
+      api.sendMessage(
+        "Failed to get a response from the chatbot. Please try again later.",
+        event.threadID,
+        event.messageID
+      );
+    }
+  }
+};
