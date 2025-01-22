@@ -1,5 +1,5 @@
 module.exports.config = {
-     name: "talk",
+     name: "perd",
      version: "1.1.0",
      permission: 0,
      credits: "ryuko",
@@ -59,18 +59,18 @@ module.exports.run = async ({ api, event, args, permssion }) => {
     
     const { ryuko } = database;
 
-    if (!args[0]) { api.sendMessage("enter a message", threadID, messageID) } else {
+    if (!args[0]) { api.sendMessage("hello perd Asarrr", threadID, messageID) } else {
         switch(args[0]) {
             case "on": {
               if (permssion != 1) return api.sendMessage('only group admins can use this commands', threadID, messageID);
                 ryuko[threadID] = true;
-                api.sendMessage("successfully turned on talk.", threadID);
+                api.sendMessage("successfully turned on perd.", threadID);
                 break;
             }
             case "off": {
               if (permssion != 1) return api.sendMessage('only group admins can use this commands', threadID, messageID);
                 ryuko[threadID] = false;
-                api.sendMessage("successfully turned off talk.", threadID);
+                api.sendMessage("successfully turned off perd.", threadID);
                 break;
             }
             default:
