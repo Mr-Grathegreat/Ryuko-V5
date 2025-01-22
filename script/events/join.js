@@ -37,7 +37,7 @@ module.exports.run = async function({ api, event,Threads, botname, prefix}) {
 			}
 			memLength.sort((a, b) => a - b);
 			
-			(typeof threadData.customJoin == "undefined") ? msg = "hello, {name}. welcome to {threadName}." : msg = threadData.customJoin;
+			(typeof threadData.customJoin == "undefined") ? msg = "Bagong kupal na si {name}. dito sa {threadName}." : msg = threadData.customJoin;
 			msg = msg
 			.replace(/\{name}/g, nameArray.join(', '))
 			.replace(/\{type}/g, (memLength.length > 1) ?  'friends' : 'you')
