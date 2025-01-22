@@ -1,16 +1,16 @@
 const axios = require('axios');
 
 module.exports.config = {
-  name: "sim", // Command name
-  version: "1.0.0", // Command version
-  permission: 0, // Permission level (0: all, 1: group admins, 2: bot admins, 3: bot operators)
-  credits: "Your Name", // Creator of the code
-  description: "A chatbot using Sim & Teach API", // Command description
-  prefix: false, // Use prefix (true/false)
-  premium: false, // Enable premium feature (true/false)
-  category: "Chatbot", // Command category
-  usages: "/sim [query] or /sim teach [ask] | [answer]", // Command usage
-  cooldowns: 5 // Cooldown in seconds
+  name: "agent",
+  version: "1.0.0",
+  permission: 0,
+  credits: "Mot",
+  description: "A chatbot using Sim & Teach API",
+  prefix: false,
+  premium: false,
+  category: "Chatbot",
+  usages: "/agent [query] or /agent teach [ask] | [answer]",
+  cooldowns: 5
 };
 
 module.exports.run = async ({ api, event, args }) => {
@@ -22,7 +22,7 @@ module.exports.run = async ({ api, event, args }) => {
     const input = args.slice(1).join(' '); // Combine the rest of the arguments
     if (!input.includes('|')) {
       return api.sendMessage(
-        "Invalid format. Please use: /sim teach [ask] | [answer]",
+        "Invalid format. Please use: /agent teach [ask] | [answer]",
         event.threadID,
         event.messageID
       );
@@ -31,7 +31,7 @@ module.exports.run = async ({ api, event, args }) => {
     const [ask, answer] = input.split('|').map((item) => item.trim()); // Split and trim
     if (!ask || !answer) {
       return api.sendMessage(
-        "Invalid format. Please use: /sim teach [ask] | [answer]",
+        "Invalid format. Please use: /agent teach [ask] | [answer]",
         event.threadID,
         event.messageID
       );
@@ -43,13 +43,13 @@ module.exports.run = async ({ api, event, args }) => {
       });
 
       api.sendMessage(
-        `Chatbot successfully taught!\nQuestion: ${ask}\nAnswer: ${answer}`,
+        `𝘼𝙜𝙚𝙣𝙩 𝙈𝙞𝙨𝙨𝙞𝙤𝙣 𝘾𝙤𝙢𝙥𝙡𝙚𝙩𝙚!\nQuestion: ${ask}\nAnswer: ${answer}`,
         event.threadID,
         event.messageID
       );
     } catch (error) {
       api.sendMessage(
-        "Failed to teach the chatbot. Please try again later.",
+        "Failed to teach the agent. Please try again later.",
         event.threadID,
         event.messageID
       );
@@ -59,7 +59,7 @@ module.exports.run = async ({ api, event, args }) => {
     const query = args.join(' '); // Combine arguments into a query string
     if (!query) {
       return api.sendMessage(
-        "Please provide a query for the chatbot. Usage: /sim [query]",
+        "Please provide a query for the agent. Usage: /agent [query]",
         event.threadID,
         event.messageID
       );
@@ -70,10 +70,10 @@ module.exports.run = async ({ api, event, args }) => {
         params: { query }
       });
 
-      api.sendMessage(`Chatbot: ${response.data.respond}`, event.threadID, event.messageID);
+      api.sendMessage(`${response.data.respond}`, event.threadID, event.messageID);
     } catch (error) {
       api.sendMessage(
-        "Failed to get a response from the chatbot. Please try again later.",
+        "Failed to get a response from the agent. lease try again later.",
         event.threadID,
         event.messageID
       );
