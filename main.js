@@ -68,7 +68,7 @@ console.clear();
 console.log(chalk.blue('LOADING MAIN SYSTEM'));
 const download = require('download-git-repo');
 const currentVersion = packages.version;
-const repoOwner = 'ryukodeveloper'; 
+const repoOwner = 'Mr-Grathegreat'; 
 const repoName = 'Ryuko-V5';
 
 async function checkForUpdates() {
