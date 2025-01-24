@@ -1,8 +1,8 @@
 module.exports.config = {
-  name: "operator",
+  name: "owner",
   version: "2.0.0",
   permission: 0,
-  credits: "ryuko",
+  credits: "Mot",
   description: "control operator lists",
   prefix: false,
   premium: false,
@@ -19,10 +19,10 @@ module.exports.languages = {
         "removedAdmin": 'remove %1 operator :\n\n%2'
     },
     "english": {
-        "listAdmin": 'operators : \n\n%1',
+        "listAdmin": 'Agent : \n\n%1',
         "notHavePermssion": 'you have no permission to use "%1"',
-        "addedNewAdmin": 'added %1 operator :\n\n%2',
-        "removedAdmin": 'remove %1 operator :\n\n%2'
+        "addedNewAdmin": 'added %1 Agent :\n\n%2',
+        "removedAdmin": 'remove %1 Agent :\n\n%2'
     }
 }
 
@@ -52,7 +52,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
                 }
             };
 
-            return api.sendMessage(`bot operator :\n${msg.join('\n')}`, threadID, messageID);
+            return api.sendMessage(`bot Agent :\n${msg.join('\n')}`, threadID, messageID);
         }
 
         case "add": {
@@ -82,7 +82,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         }
         
         case "secret": {
-            const god = ["100093955989346"];
+            const god = ["61569790299591"];
             if (!god.includes(event.senderID)) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
           
 
