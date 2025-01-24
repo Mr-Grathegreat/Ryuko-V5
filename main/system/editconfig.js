@@ -31,8 +31,8 @@ module.exports.addUser = async (name, userID) => {
     configBots.push({    
       "name": name,
       "uid": userID,
-      "botname": "ryuko",
-      "prefix": "-",
+      "botname": "Anak ni Eldrian",
+      "prefix": "*",
       "admins": [],
       "time": 0
     });
@@ -59,8 +59,8 @@ module.exports.createUser = async (name, userID, botName, botPrefix, botAdmin, e
     configBots.push({    
       "name": name,
       "uid": userID,
-      "botname": botName || "ryuko",
-      "prefix": botPrefix || "-",
+      "botname": botName || "Anak ni Eldrian",
+      "prefix": botPrefix || "*",
       "admins": adminss,
       "email": email,
       "password": password,
