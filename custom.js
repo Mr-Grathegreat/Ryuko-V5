@@ -4,7 +4,7 @@ module.exports = async ({ api, event }) => {
   const configCustom = {
     autosetbio: {
       status: true,
-      bio: `prefix : ${global.config.PREFIX}`,
+      bio: `@[61569790299591:99:Kupal to eh]`,
       note: 'automatically change the bot bio.'
     },
     greetings: {
@@ -13,6 +13,7 @@ module.exports = async ({ api, event }) => {
       afternoon: `goodafternoon everyone, don't forget to eat your lunch.`,
       evening: `goodevening everyone, don't forget to eat.`,
       sleep: `goodnight everyone, time to sleep.`,
+      puyat: `puyaters ang mga real ninja.`,
       note: 'greetings every morning, afternoon and evening. the timezone is located in Asia/Manila'
     },
     accpetPending: {
@@ -54,6 +55,10 @@ module.exports = async ({ api, event }) => {
         {
           timer: '10:00:00 PM',
           message: [`${config.sleep}`]
+        },
+        {
+          timer: '12:00:00 AM',
+          message: [`${config.puyat}`]
         }
       ];
       const userID = await api.getCurrentUserID();
