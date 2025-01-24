@@ -2,7 +2,7 @@
 	name: "leave",
 	eventType: ["log:unsubscribe"],
 	version: "1.0.0",
-	credits: "ryuko",
+	credits: "Mot",
 	description: "notify leave.",
 };
 
