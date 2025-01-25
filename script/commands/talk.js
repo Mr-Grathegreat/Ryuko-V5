@@ -1,10 +1,10 @@
 module.exports.config = {
-     name: "talk",
+     name: "perd",
      version: "1.1.0",
      permission: 0,
-     credits: "ryuko",
+     credits: "Mot",
      premium: false,
-     description: "talk reply",
+     description: "perd reply",
      prefix: false,
      category: "without prefix",
      cooldowns: 0
@@ -40,8 +40,8 @@ module.exports.handleEvent = async ({ api, event, args, Threads }) => {
     if (ryuko.hasOwnProperty(threadID) && ryuko[threadID] == true) {
       if (event.senderID !== api.getCurrentUserID()) {
       axios.get(encodeURI(`https://joncll.serv00.net/sim/sim.php?query=${event.body}`)).then(res => {
-            if (res.data.respond == "null" || res.data.respond == "i didn't understand you, teach me.") {
-                api.sendMessage("i didn't understand you, teach me.",threadID,messageID)
+            if (res.data.respond == "null" || res.data.respond == "perd didn't understand you, teach me.") {
+                api.sendMessage("perd didn't understand you, teach me.",threadID,messageID)
             } else {
                 return api.sendMessage(res.data.respond, threadID, messageID);
             }
@@ -59,18 +59,18 @@ module.exports.run = async ({ api, event, args, permssion }) => {
     
     const { ryuko } = database;
 
-    if (!args[0]) { api.sendMessage("enter a message", threadID, messageID) } else {
+    if (!args[0]) { api.sendMessage("Hello perd asarrr!", threadID, messageID) } else {
         switch(args[0]) {
             case "on": {
               if (permssion != 1) return api.sendMessage('only group admins can use this commands', threadID, messageID);
                 ryuko[threadID] = true;
-                api.sendMessage("successfully turned on talk.", threadID);
+                api.sendMessage("successfully turned on perd", threadID);
                 break;
             }
             case "off": {
               if (permssion != 1) return api.sendMessage('only group admins can use this commands', threadID, messageID);
                 ryuko[threadID] = false;
-                api.sendMessage("successfully turned off talk.", threadID);
+                api.sendMessage("successfully turned off perd.", threadID);
                 break;
             }
             default:
